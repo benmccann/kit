@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - simplify-test
   pull_request:
 
 env:
@@ -64,11 +65,9 @@ jobs:
       - run: pnpm playwright install ${{ matrix.e2e-browser }}
       - run: pnpm test
       - name: Archive test results
-        if: failure()
         shell: bash
         run: find packages -type d -name test-results -not -empty | tar -czf test-results.tar.gz --files-from=-
       - name: Upload test results
-        if: failure()
         uses: actions/upload-artifact@v3
         with:
           retention-days: 3

@@ -906,9 +906,6 @@ test('+server.js next to +page.svelte works', async ({ page }) => {
 
 	for (const method of ['GET', 'PUT', 'PATCH', 'POST', 'DELETE']) {
 		await page.click(`button:has-text("${method}")`);
-		await page.waitForFunction(
-			(method) => document.querySelector('pre').textContent === method,
-			method
-		);
+		await expect(page.locator('pre')).toHaveText(method);
 	}
 });
