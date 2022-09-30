@@ -64,9 +64,7 @@
 		"check:all": "tsc && pnpm -r --filter=\"./**\" check",
 		"format": "npm run lint -- --write",
 		"prepublishOnly": "npm run build",
-		"test": "npm run test:integration",
-		"test:integration": "pnpm run -r --workspace-concurrency 1 --filter=\"./test/apps/**\" test",
-		"test:unit": "uvu src \"(spec\\.js|test[\\\\/]index\\.js)\"",
+		"test": "cd test/apps/basics && npm run test",
 		"types": "node scripts/extract-types.js",
 		"postinstall": "node postinstall.js"
 	},
