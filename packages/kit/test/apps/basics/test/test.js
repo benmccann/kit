@@ -404,7 +404,7 @@ test.describe('Encoded paths', () => {
 
 	test('allows %-encoded percent character in directory names', async ({ page, clicknav }) => {
 		await page.goto('/encoded');
-		await clicknav('[href="/encoded/99%"]');
+		await clicknav('[href="/encoded/99%25"]');
 		expect(await page.textContent('h1')).toBe('99%');
 	});
 
